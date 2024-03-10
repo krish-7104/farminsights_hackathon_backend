@@ -1,6 +1,6 @@
-const express =require ("express");
-const {connectToMongo}= require("./database/connect.js");
-const { config }=require ("dotenv");
+const express = require("express");
+const { connectToMongo } = require("./database/connect.js");
+const { config } = require("dotenv");
 config()
 const app = express()
 app.use(express.json())

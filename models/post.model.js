@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose"
+const { Schema, model } = require("mongoose")
 
 const PostModel = new Schema({
     userId: {
@@ -18,4 +18,4 @@ const PostModel = new Schema({
     }]
 }, { timestamps: true })
 
-export default model("post", PostModel)
+module.exports = model("post", PostModel)

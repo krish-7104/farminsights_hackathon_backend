@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose"
+const { Schema, model } = require("mongoose")
 
 const ReplyModel = new Schema({
     userId: {
@@ -14,3 +14,5 @@ const ReplyModel = new Schema({
     }
 
 }, { timestamps: true })
+
+module.exports = mongoose.model('reply', ReplyModel);

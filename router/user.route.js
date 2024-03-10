@@ -8,4 +8,4 @@ router.route('/get-user').post(userController.user);
 router.route('/forgotPassword').post(userController.forgotPassword);
 router.route('/updatePassword').post(userController.updatePassword);
 
-module.exports=router;
+module.exports = router;

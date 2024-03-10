@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose"
+const { Schema, model } = require("mongoose")
 
 const BlogSchema = new Schema({
     title: {
@@ -12,4 +12,4 @@ const BlogSchema = new Schema({
     }
 }, { timestamps: true })
 
-export default model("blog", BlogSchema)
+module.exports = model("blog", BlogSchema)
