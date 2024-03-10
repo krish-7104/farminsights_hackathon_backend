@@ -1,9 +1,9 @@
-import { connect } from "mongoose";
+const mongoose =require("mongoose");
 const DB_NAME = "FarmInsights"
 
 const connectToMongo = async () => {
     try {
-        const connectionInstance = await connect(`${process.env.MONGOURI}/${DB_NAME}`)
+        const connectionInstance = await mongoose.connect(`${process.env.MONGOURI}/${DB_NAME}`)
         console.log(`MongoDB connected !! DB HOST: ${connectionInstance.connection.host}`);
     } catch (error) {
         console.log("MONGODB connection FAILED ", error);
@@ -11,4 +11,4 @@ const connectToMongo = async () => {
     }
 }
 
-export default connectToMongo
+module.exports={connectToMongo};
