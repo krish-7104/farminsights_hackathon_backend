@@ -1,9 +1,11 @@
 const Blog = require('../models/blogs.model.js');
+const uploadOnCloudinary = require("../utils/cloudinary.js")
 
 exports.createBlog = async (req, res) => {
     try {
-        const { title, description, image } = req.body;
-        const blog = new Blog({ title, description, image });
+        const { title, description } = req.body;
+        const uploadedImage = await uploadOnCloudinary(req.file.path)
+        const blog = new Blog({ title, description, image: uploadedImage.url });
         await blog.save();
         res.status(201).json(blog);
     } catch (error) {
