@@ -12,7 +12,6 @@ const ReplyModel = new Schema({
         type: Schema.Types.ObjectId,
         ref: "post"
     }
-
 }, { timestamps: true })
 
 module.exports = mongoose.model('reply', ReplyModel);

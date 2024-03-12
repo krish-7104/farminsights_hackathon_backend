@@ -5,7 +5,10 @@ const PostModel = new Schema({
         type: Schema.Types.ObjectId,
         ref: "user"
     },
-    text: {
+    title: {
+        type: String,
+    },
+    description: {
         type: String,
     },
     replies: [{
@@ -18,4 +21,4 @@ const PostModel = new Schema({
     }]
 }, { timestamps: true })
 
-module.exports = model("post", PostModel)
+module.exports = model("post",PostModel)

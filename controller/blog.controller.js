@@ -36,8 +36,8 @@ exports.getBlogById = async (req, res) => {
 
 exports.updateBlog = async (req, res) => {
     try {
-        const { title, description, image } = req.body;
-        const blog = await Blog.findByIdAndUpdate(req.params.id, { title, description, image }, { new: true });
+        const { title, description } = req.body;
+        const blog = await Blog.findByIdAndUpdate(req.params.id, { title, description }, { new: true });
         if (!blog) {
             return res.status(404).json({ message: 'Blog not found' });
         }

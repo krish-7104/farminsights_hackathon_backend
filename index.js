@@ -3,6 +3,9 @@ const { connectToMongo } = require("./database/connect.js");
 const { config } = require("dotenv");
 const userRouter = require("./router/user.route.js");
 const blogRouter = require("./router/blog.route.js");
+const liveStockRouter = require("./router/stock.route.js");
+const postRouter=require("./router/post.route.js")
+
 const cors = require("cors")
 config()
 const app = express()
@@ -19,6 +22,8 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/blog", blogRouter);
+app.use("/api/v1/liveStock", liveStockRouter);
+app.use("/api/v1/post",postRouter);
 
 app.listen(PORT, () => {
     console.log(`Server Listening on http://localhost:${PORT}`)
