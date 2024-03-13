@@ -17,7 +17,7 @@ exports.createReply = async (req, res) => {
 
 exports.getAllReplies = async (req, res) => {
     try {
-        const replies = await Reply.find();
+        const replies = await Reply.find().sort({ createdAt: -1 });
         res.json(replies);
     } catch (err) {
         res.status(500).json({ message: err.message });

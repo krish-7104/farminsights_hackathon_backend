@@ -13,7 +13,7 @@ exports.createStock = async (req, res) => {
 
 exports.getAllStocks = async (req, res) => {
     try {
-        const stocks = await liveStock.find();
+        const stocks = await liveStock.find().sort({ createdAt: -1 });
         res.status(200).json(stocks);
     } catch (error) {
         res.status(500).json({ error: error.message });
