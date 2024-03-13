@@ -3,8 +3,8 @@ const { Schema, model } = require("mongoose")
 const PostModel = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
-        ref: "user"
-    },
+        ref: "User"
+    },  
     title: {
         type: String,
     },
@@ -13,11 +13,11 @@ const PostModel = new Schema({
     },
     replies: [{
         type: Schema.Types.ObjectId,
-        ref: "reply"
+        ref: "Reply"
     }],
     like: [{
         type: Schema.Types.ObjectId,
-        ref: "user"
+        ref: "User"
     }]
 }, { timestamps: true })
 

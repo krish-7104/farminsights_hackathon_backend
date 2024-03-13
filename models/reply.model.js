@@ -1,17 +1,21 @@
-const { Schema, model } = require("mongoose")
+const mongoose=require('mongoose');
+const Schema=mongoose.Schema;
 
 const ReplyModel = new Schema({
     userId: {
         type: Schema.Types.ObjectId,
-        ref: "user"
+        ref: "User"
     },
     text: {
         type: String,
     },
     post: {
         type: Schema.Types.ObjectId,
-        ref: "post"
+        ref: "Post"
     }
 }, { timestamps: true })
 
-module.exports = mongoose.model('reply', ReplyModel);
+const reply=mongoose.model('Reply',ReplyModel);
+
+module.exports=reply;
+

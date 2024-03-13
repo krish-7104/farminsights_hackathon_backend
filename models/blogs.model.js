@@ -12,4 +12,4 @@ const BlogSchema = new Schema({
     }
 }, { timestamps: true })
 
-module.exports = model("blog", BlogSchema)
+module.exports = model("Blog", BlogSchema)

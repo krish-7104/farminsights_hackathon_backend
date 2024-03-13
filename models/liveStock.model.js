@@ -20,7 +20,7 @@ const liveStockSchema=new Schema({
     }
 },{timestamp:true});
 
-const liveStock=mongoose.model('liveStock',liveStockSchema);
+const liveStock=mongoose.model('LiveStock',liveStockSchema);
 
 module.exports=liveStock;
 
