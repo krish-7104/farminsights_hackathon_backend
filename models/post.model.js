@@ -21,4 +21,4 @@ const PostModel = new Schema({
     }]
 }, { timestamps: true })
 
-module.exports = model("post",PostModel)
+module.exports = model("Post",PostModel)

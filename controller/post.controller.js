@@ -1,5 +1,6 @@
 const express = require('express');
 const Post = require('../models/post.model.js');
+const Reply = require('../models/reply.model.js');
 
 exports.createPost=async (req, res) => {
     try {

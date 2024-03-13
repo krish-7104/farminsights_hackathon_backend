@@ -1,5 +1,4 @@
-const mongoose=require('mongoose');
-const Schema=mongoose.Schema;
+const { Schema, model } = require("mongoose");
 
 const ReplyModel = new Schema({
     userId: {
@@ -15,7 +14,7 @@ const ReplyModel = new Schema({
     }
 }, { timestamps: true })
 
-const reply=mongoose.model('Reply',ReplyModel);
+module.exports=model('Reply',ReplyModel);
 
-module.exports=reply;
+
 
