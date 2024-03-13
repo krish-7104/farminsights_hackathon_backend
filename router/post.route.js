@@ -4,9 +4,14 @@ const postController = require('../controller/post.controller.js');
 const Post = require('../models/post.model.js');
 
 // Middleware to get post by ID
-async function getPost (req, res, next){
+async function getPost(req, res, next) {
     try {
-        const post = await Post.findById(req.params.id);
+        const post = await Post.findById(req.params.id).populate("userId replies like").populate({
+            path: 'replies',
+            populate: {
+                path: 'userId',
+            }
+        })
         if (post == null) {
             return res.status(404).json({ message: 'Cannot find post' });
         }
@@ -19,9 +24,9 @@ async function getPost (req, res, next){
 
 router.route('/createPost').post(postController.createPost);
 router.route('/getAllPosts').get(postController.getAllPosts);
-router.route('/getPost/:id').get(getPost,postController.getPostById);
-router.route('/updatePost/:id').put(getPost,postController.updatePost);
-router.route('/likePost/:id').patch(getPost,postController.appendLikeToPost);
-router.route('/deletePost/:id').delete(getPost,postController.deletePost);
+router.route('/getPost/:id').get(getPost, postController.getPostById);
+router.route('/updatePost/:id').put(getPost, postController.updatePost);
+router.route('/likePost/:id').patch(getPost, postController.appendLikeToPost);
+router.route('/deletePost/:id').delete(getPost, postController.deletePost);
 
 module.exports = router;
