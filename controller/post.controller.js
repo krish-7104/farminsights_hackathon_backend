@@ -2,7 +2,7 @@ const express = require('express');
 const Post = require('../models/post.model.js');
 const Reply = require('../models/reply.model.js');
 
-exports.createPost=async (req, res) => {
+exports.createPost = async (req, res) => {
     try {
         const post = await Post.create(req.body);
         res.status(201).json(post);
@@ -11,9 +11,9 @@ exports.createPost=async (req, res) => {
     }
 };
 
-exports.getAllPosts= async (req, res) => {
+exports.getAllPosts = async (req, res) => {
     try {
-        const posts = await Post.find().populate("like userId")
+        const posts = await Post.find().populate("like userId replies")
         res.json(posts);
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -26,9 +26,9 @@ exports.getPostById = async (req, res) => {
 
 exports.updatePost = async (req, res) => {
     try {
-        const { title, description,replies,like,userId } = req.body;
-        const post = await Post.findByIdAndUpdate(req.params.id, { title, description,replies,like,userId}, { new: true });
-        
+        const { title, description, replies, like, userId } = req.body;
+        const post = await Post.findByIdAndUpdate(req.params.id, { title, description, replies, like, userId }, { new: true });
+
         if (!post) {
             return res.status(404).json({ message: 'Post not found' });
         }

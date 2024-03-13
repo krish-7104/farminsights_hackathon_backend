@@ -1,8 +1,14 @@
 const Reply = require('../models/reply.model.js');
+const Post = require('../models/post.model.js');
 
 exports.createReply = async (req, res) => {
     try {
         const reply = await Reply.create(req.body);
+        await Post.findByIdAndUpdate(reply.post, {
+            $push: {
+                replies: reply._id
+            }
+        })
         res.status(201).json(reply);
     } catch (err) {
         res.status(400).json({ message: err.message });
@@ -24,9 +30,9 @@ exports.getReplyById = async (req, res) => {
 
 exports.updateReply = async (req, res) => {
     try {
-        const { userId,text,post } = req.body;
-        const reply = await Reply.findByIdAndUpdate(req.params.id, { userId,text,post}, { new: true });
-        
+        const { userId, text, post } = req.body;
+        const reply = await Reply.findByIdAndUpdate(req.params.id, { userId, text, post }, { new: true });
+
         if (!reply) {
             return res.status(404).json({ message: 'Reply not found' });
         }
