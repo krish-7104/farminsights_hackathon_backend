@@ -4,7 +4,7 @@ const expenseModel = new Schema({
     text: {
         type: String,
     },
-    descryption:{
+    description:{
         type:String,
     },
     amount:{
@@ -15,4 +15,4 @@ const expenseModel = new Schema({
     }
 }, { timestamps: true })
 
-module.exports = mongoose.model('Expense', expenseModel);
+module.exports = model('Expense', expenseModel);
