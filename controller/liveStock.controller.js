@@ -1,9 +1,9 @@
-const liveStock=require('../models/liveStock.model.js');
+const liveStock = require('../models/liveStock.model.js');
 
 exports.createStock = async (req, res) => {
     try {
-        const { breed,sex,inseminationDate,type } = req.body;
-        const stock = new liveStock({ breed,sex,inseminationDate,type });
+        const { breed, sex, dob, type } = req.body;
+        const stock = new liveStock({ breed, sex, dob, type });
         await stock.save();
         res.status(201).json(stock);
     } catch (error) {
@@ -34,8 +34,8 @@ exports.getStockById = async (req, res) => {
 
 exports.updateStock = async (req, res) => {
     try {
-        const { breed,sex,inseminationDate,type } = req.body;
-        const stock = await liveStock.findByIdAndUpdate(req.params.id, { breed,sex,inseminationDate,type }, { new: true });
+        const { breed, sex, inseminationDate, type } = req.body;
+        const stock = await liveStock.findByIdAndUpdate(req.params.id, { breed, sex, inseminationDate, type }, { new: true });
         if (!stock) {
             return res.status(404).json({ message: 'Stock not found' });
         }
